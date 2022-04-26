@@ -1,5 +1,4 @@
 /* CSS Style */
-
 body {
     min-height: 100vh;
     display: flex;
@@ -55,10 +54,6 @@ body {
     border-radius: 3px;
 }
 
-/* #expression, #output {
-    padding: 5px;
-} */
-
 #expression {
     font-size: 18px;
     padding: 5px;
@@ -78,7 +73,7 @@ body {
     row-gap: 20px;
 }
 
-.button, .wideButton {
+.button, .clearButton {
     font-family: "Roboto Slab";
     font-size: 24px;
 }
@@ -90,9 +85,6 @@ body {
 #equals {
     grid-column: 3 / 5;
 }
-
-/* .button { */
-/* } */
 
 #footer {
     display: flex;
