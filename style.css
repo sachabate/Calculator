@@ -58,11 +58,16 @@ body {
     font-size: 18px;
     padding: 5px;
     max-width: 95%;
+    overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 #output {
     font-size: 36px;
     padding: 10px;
+    max-width: 95%;
+    overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .mainButtons {
