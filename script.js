@@ -29,8 +29,19 @@ numberButtons.forEach((button) => {
     button.addEventListener('click', () => appendNumber(button.textContent))
 });
 
-function evaluate(operator, arg1, arg2) {
-
+function evaluate() {
+    if (arg1 == '') {
+        return;
+    } else {
+        arg2 = output.textContent;
+        expression.textContent += ' ' + output.textContent;
+    }
+    
+    switch(true) {
+        case operator == 'add':
+            output.textContent = add(arg1, arg2);
+            break;
+    }
 }
 
 function clear() {
@@ -57,6 +68,7 @@ function setOperator(operationText, newOperator) {
     if (operator == null) {
         operator = operationText;
         expression.textContent += ' ' + output.textContent + ' ' + newOperator;
+        checkExpressionLength();
         arg1 = output.textContent;
         output.textContent = '0';
     } else {
@@ -72,5 +84,14 @@ function appendNumber(number) {
         return;
     } else {
         output.textContent += number;
+    }
+}
+
+function checkExpressionLength() {
+    if (expression.textContent.length > 27) {
+        while (expression.textContent.length > 25) {
+        expression.textContent = expression.textContent.substring(1);
+        }
+        expression.textContent = '...' + expression.textContent;
     }
 }
