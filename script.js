@@ -65,6 +65,10 @@ function evaluate(equalsPressed) {
         operatorSet = false;
     }
 
+    if (output.textContent.includes('.')) {
+        roundDecimal();
+    }
+    
     if (output.textContent.length > 13 || output.textContent == 'ERROR') {
         errorScreen();
     }
@@ -180,6 +184,10 @@ function checkExpressionLength() {
         }
         expression.textContent = '...' + expression.textContent;
     }
+}
+
+function roundDecimal() {
+    output.textContent = Math.round(output.textContent * 1000) / 1000;
 }
 
 function errorScreen() {
