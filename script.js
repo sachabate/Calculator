@@ -9,6 +9,9 @@ const allClearButton = document.getElementById('allClear');
 const decimalButton = document.getElementById('decimal');
 const equalsButton = document.getElementById('equals');
 
+let clearScreen = false;
+let operatorSet = false;
+
 let operator = null;
 let arg1 = '';
 let arg2 = '';
@@ -16,7 +19,11 @@ let arg2 = '';
 expression.innerHTML = '';
 output.innerHTML = '0';
 
-equalsButton.addEventListener('click', evaluate);
+equalsButton.addEventListener('click', () => {
+    printExpression(false);
+    evaluate();
+});
+
 clearButton.addEventListener('click', clear);
 allClearButton.addEventListener('click', allClear);
 decimalButton.addEventListener('click', addDecimal);
@@ -34,14 +41,21 @@ function evaluate() {
         return;
     } else {
         arg2 = output.textContent;
-        expression.textContent += ' ' + output.textContent;
     }
     
     switch(true) {
         case operator == 'add':
             output.textContent = add(arg1, arg2);
             break;
+        case operator == 'subtract':
+            output.textContent = subtract(arg1, arg2);
+            break;
     }
+
+    arg1 = output.textContent;
+    arg2 = '';
+    clearScreen = true;
+    operatorSet = false;
 }
 
 function clear() {
@@ -54,10 +68,16 @@ function allClear() {
     output.textContent = '0';
     arg1 = '';
     arg2 = '';
+
+    clearScreen = false;
+    operatorSet = false;
 }
 
 function addDecimal() {
-    if (output.textContent.includes('.')) {
+    if (clearScreen) {
+        output.textContent = '0.';
+        clearScreen = false;
+    } else if (output.textContent.includes('.')) {
         return;
     } else {
         output.textContent += '.';
@@ -67,23 +87,39 @@ function addDecimal() {
 function setOperator(operationText, newOperator) {
     if (operator == null) {
         operator = operationText;
-        expression.textContent += ' ' + output.textContent + ' ' + newOperator;
-        checkExpressionLength();
+        printExpression(true, newOperator);
         arg1 = output.textContent;
         output.textContent = '0';
     } else {
         arg2 = output.textContent;
+        printExpression(true, newOperator);
         evaluate();
+        operator = operationText;
     }
 }
 
 function appendNumber(number) {
-    if (output.textContent === '0') {
-        output.innerHTML = number;
+    if(clearScreen) {
+        output.textContent = number;
+        clearScreen = false;
+    } else if (output.textContent === '0') {
+        output.textContent = number;
     } else if (output.textContent.length >= 13) {
         return;
     } else {
         output.textContent += number;
+    }
+}
+
+function printExpression(openExpression, newOperator) {
+    if (openExpression) {
+        expression.textContent += ' ' + output.textContent + ' ' + newOperator;
+        checkExpressionLength();
+        return;
+    } else {
+        expression.textContent += ' ' + output.textContent;
+        checkExpressionLength();
+        return;
     }
 }
 
