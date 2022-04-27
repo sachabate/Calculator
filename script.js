@@ -20,6 +20,7 @@ expression.innerHTML = '';
 output.innerHTML = '0';
 
 equalsButton.addEventListener('click', () => {
+    arg2 = output.textContent;
     printExpression(false);
     evaluate();
 });
@@ -37,10 +38,8 @@ numberButtons.forEach((button) => {
 });
 
 function evaluate() {
-    if (arg1 == '') {
+    if (arg1 == '' || arg2 == '') {
         return;
-    } else {
-        arg2 = output.textContent;
     }
     
     switch(true) {
@@ -55,7 +54,6 @@ function evaluate() {
     arg1 = output.textContent;
     arg2 = '';
     clearScreen = true;
-    operatorSet = false;
 }
 
 function clear() {
@@ -85,16 +83,34 @@ function addDecimal() {
 }
 
 function setOperator(operationText, newOperator) {
+    if (clearScreen) {
+        operator = operationText;
+        if (operatorSet) {
+            printOperator(false, newOperator);
+        } else {
+            printOperator(true, newOperator);
+        }
+        operatorSet = true;
+        return;
+    }
+
+    if (operatorSet) {
+        operator = operationText;
+        printOperator(false, newOperator);
+    }
+    
     if (operator == null) {
         operator = operationText;
         printExpression(true, newOperator);
         arg1 = output.textContent;
         output.textContent = '0';
+        operatorSet = true;
     } else {
         arg2 = output.textContent;
         printExpression(true, newOperator);
         evaluate();
         operator = operationText;
+        operatorSet = true;
     }
 }
 
@@ -109,6 +125,8 @@ function appendNumber(number) {
     } else {
         output.textContent += number;
     }
+
+    operatorSet = false;
 }
 
 function printExpression(openExpression, newOperator) {
@@ -120,6 +138,16 @@ function printExpression(openExpression, newOperator) {
         expression.textContent += ' ' + output.textContent;
         checkExpressionLength();
         return;
+    }
+}
+
+function printOperator(addOperator, newOperator) {
+    if (addOperator) {
+        expression.textContent += ' ' + newOperator;
+        checkExpressionLength();
+        return;
+    } else {
+        expression.textContent = expression.textContent.replace(/.$/,newOperator);
     }
 }
 
