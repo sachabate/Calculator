@@ -6,5 +6,14 @@ See [The Odin Project](https://www.theodinproject.com/lessons/foundations-calcul
 
 A small, simple, 13-digit calculator with no luxuries bar an expression history.
 
-- Is beige
-- Does not divide by zero
+- `A` to **Clear All**
+
+- `Del` to **Clear**
+
+- `Enter` to **Equals**
+
+#
+
+Does not divide by zero
+
+Is Beige

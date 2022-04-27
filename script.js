@@ -4,6 +4,11 @@ const output = document.getElementById("output");
 
 const numberButtons = document.querySelectorAll('[number]');
 const operatorButtons = document.querySelectorAll('[operator]');
+
+const addButton = document.getElementById('add');
+const subtractButton = document.getElementById('subtract');
+const divideButton = document.getElementById('divide');
+const multiplyButton = document.getElementById('multiply');
 const clearButton = document.getElementById('clear');
 const allClearButton = document.getElementById('allClear');
 const decimalButton = document.getElementById('decimal');
