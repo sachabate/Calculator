@@ -118,7 +118,7 @@ button#ham:hover {
     padding: 5px;
     max-width: 95%;
     overflow-x: auto;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Roboto Mono', monospace;
 }
 
 #output {
@@ -126,7 +126,7 @@ button#ham:hover {
     padding: 10px;
     max-width: 95%;
     overflow-x: auto;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Roboto Mono', monospace;
 }
 
 .mainButtons {
@@ -138,7 +138,7 @@ button#ham:hover {
 }
 
 .button, .clearButton {
-    font-family: "Roboto Slab";
+    font-family: 'Roboto Slab';
     font-size: 24px;
 }
 
