@@ -1,6 +1,6 @@
 // JavaScript script
-const expression = document.getElementById("expression");
-const output = document.getElementById("output");
+const expression = document.getElementById('expression');
+const output = document.getElementById('output');
 
 const numberButtons = document.querySelectorAll('[number]');
 const operatorButtons = document.querySelectorAll('[operator]');

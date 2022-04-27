@@ -10,16 +10,24 @@
     <script src="script.js" defer></script>
     <script src="operations.js"></script>
     <script src="keyboardIntegration.js"></script>
+    <script src="active.js" defer></script>
     <script src="https://kit.fontawesome.com/d99349a929.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="header">
-        <p class="headerTitle">Calculator</p>
-        <!-- <p class="headerTitle"></p> -->
-        <a href="https://github.com/sachabate/Calculator" class="headerTitle" target="_blank">
+        <p id="calculatorTitle" class="headerTitle">Calculator</p>
+        <a href="https://github.com/sachabate/Calculator" id="github" class="headerTitle" target="_blank">
             <i class="fa-brands fa-github"></i>
         </a>
+        <button id="ham">
+            <i class="fa-solid fa-bars"></i>
+        </button>
     </div>
+    <ul id="sub" class="">
+        <div class="subItem"><span style="color: rgb(248, 233, 147); font-weight: bold;">A</span> to <span style="font-weight: bold;">Clear All</span></div>
+        <div class="subItem"><span style="color: rgb(248, 233, 147); font-weight: bold;">Del</span> to <span style="font-weight: bold;">Clear</span></div>
+        <div class="subItem"><span style="color: rgb(248, 233, 147); font-weight: bold;">Enter</span> to <span style="font-weight: bold;">Equals</span></div>
+    </ul>
     <div id="content">
         <div id="calcFrame">
             <div class="display">
