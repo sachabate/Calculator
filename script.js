@@ -37,7 +37,7 @@ numberButtons.forEach((button) => {
     button.addEventListener('click', () => appendNumber(button.textContent))
 });
 
-function evaluate() {
+function evaluate(equalsPressed) {
     if (arg1 == '' || arg2 == '') {
         return;
     }
@@ -49,11 +49,25 @@ function evaluate() {
         case operator == 'subtract':
             output.textContent = subtract(arg1, arg2);
             break;
+        case operator == 'multiply':
+            output.textContent = multiply(arg1, arg2);
+            break;
+        case operator == 'divide':
+            output.textContent = divide(arg1, arg2);
+            break;
     }
 
     arg1 = output.textContent;
     arg2 = '';
     clearScreen = true;
+
+    if (equalsPressed != false) {
+        operatorSet = false;
+    }
+
+    if (output.textContent.length > 13 || output.textContent == 'ERROR') {
+        errorScreen();
+    }
 }
 
 function clear() {
@@ -69,6 +83,10 @@ function allClear() {
 
     clearScreen = false;
     operatorSet = false;
+
+    document.querySelectorAll('button').forEach((button) => {
+        button.disabled = false;
+    })
 }
 
 function addDecimal() {
@@ -83,6 +101,8 @@ function addDecimal() {
 }
 
 function setOperator(operationText, newOperator) {
+    if (output.textContent == '0' && expression.textContent == '') {return}
+    
     if (clearScreen) {
         operator = operationText;
         if (operatorSet) {
@@ -108,14 +128,16 @@ function setOperator(operationText, newOperator) {
     } else {
         arg2 = output.textContent;
         printExpression(true, newOperator);
-        evaluate();
+        evaluate(false);
         operator = operationText;
         operatorSet = true;
     }
 }
 
 function appendNumber(number) {
-    if(clearScreen) {
+    if (clearScreen && !operatorSet) {allClear()}
+    
+    if (clearScreen) {
         output.textContent = number;
         clearScreen = false;
     } else if (output.textContent === '0') {
@@ -158,4 +180,12 @@ function checkExpressionLength() {
         }
         expression.textContent = '...' + expression.textContent;
     }
+}
+
+function errorScreen() {
+    output.textContent = 'ERROR';
+    document.querySelectorAll('button').forEach((button) => {
+        button.disabled = true;
+    })
+    allClearButton.disabled = false;
 }
