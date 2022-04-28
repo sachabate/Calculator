@@ -14,7 +14,7 @@ const allClearButton = document.getElementById('allClear');
 const decimalButton = document.getElementById('decimal');
 const equalsButton = document.getElementById('equals');
 
-let clearScreen = false;
+let clearScreen = true;
 let operatorSet = false;
 
 let operator = null;
@@ -91,7 +91,7 @@ function allClear() {
     arg1 = '';
     arg2 = '';
 
-    clearScreen = false;
+    clearScreen = true;
     operatorSet = false;
 
     document.querySelectorAll('button').forEach((button) => {
