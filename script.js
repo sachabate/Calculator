@@ -25,6 +25,7 @@ expression.innerHTML = '';
 output.innerHTML = '0';
 
 equalsButton.addEventListener('click', () => {
+    if (clearScreen) {return};
     arg2 = output.textContent;
     printExpression(false);
     evaluate();
