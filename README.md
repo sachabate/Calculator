@@ -2,7 +2,7 @@
 
 ## A simple browser calculator
 
-See [The Odin Project](https://www.theodinproject.com/lessons/foundations-calculator) for project details.
+You can view the Calculator [here](https://sachabate.github.io/Calculator/). See [The Odin Project](https://www.theodinproject.com/lessons/foundations-calculator) for project details.
 
 A small, simple, 13-digit calculator with no luxuries bar an expression history.
 
